@@ -1,0 +1,8 @@
+var number = 1234
+var temp = number
+var sum = 0
+
+while temp > 0 {
+    let digit = temp % 10
+    sum += digit
+    temp /= 10
