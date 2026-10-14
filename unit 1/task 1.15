@@ -1,0 +1,11 @@
+var a: Double = 20
+var b: Double = 10
+var op = "+"
+
+switch op {
+case "+":
+    print("Result: \(a + b)")
+case "-":
+    print("Result: \(a - b)")
+case "*":
+    print("
