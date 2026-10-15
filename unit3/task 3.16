@@ -1,0 +1,8 @@
+struct MathHelper {
+    static func square(_ number: Int) -> Int {
+        return number * number
+    }
+}
+
+print(MathHelper.square(5))
+print(MathHelper.square(8))
