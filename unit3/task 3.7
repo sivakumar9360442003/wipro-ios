@@ -1,0 +1,25 @@
+class Car {
+    var brand: String
+    var speed: Int
+
+    init(brand: String, speed: Int = 0) {
+        self.brand = brand
+        self.speed = speed
+    }
+
+    func accelerate() {
+        speed += 10
+        print("\(brand) is accelerating. Speed: \(speed) km/h")
+    }
+
+    func brake() {
+        speed = max(0, speed - 10)
+        print("\(brand) is braking. Speed: \(speed) km/h")
+    }
+}
+
+
+let car = Car(brand: "Toyota")
+car.accelerate()  // Speed: 10 km/h
+car.accelerate()  // Speed: 20 km/h
+car.brake() 
