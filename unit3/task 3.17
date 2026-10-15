@@ -1,0 +1,83 @@
+enum Grade: String {
+    case A = "A"
+    case B = "B"
+    case C = "C"
+    case D = "D"
+    case F = "F"
+
+    static func calculate(marks: Int) -> Grade {
+        switch marks {
+        case 90...100: return .A
+        case 80..<90:  return .B
+        case 70..<80:  return .C
+        case 60..<70:  return .D
+        default:       return .F
+        }
+    }
+}
+
+struct Student {
+    let name: String
+    let marks: Int
+
+    var grade: Grade {
+        return Grade.calculate(marks: marks)
+    }
+
+    init?(name: String, marks: Int) {
+        guard (0...100).contains(marks) else {
+            return nil
+        }
+
+        self.name = name
+        self.marks = marks
+    }
+}
+
+class School {
+    private var students: [Student] = []
+
+    func addStudent(_ student: Student) {
+        students.append(student)
+        print("Added student: \(student.name)")
+    }
+
+    func printReport() {
+        print("\n===== STUDENT REPORT =====")
+
+        let sortedStudents = students.sorted {
+            $0.marks > $1.marks
+        }
+
+        for student in sortedStudents {
+            print(
+                "Name: \(student.name), " +
+                "Marks: \(student.marks), " +
+                "Grade: \(student.grade.rawValue)"
+            )
+        }
+
+        print("==========================")
+    }
+}
+
+// Main program
+let school = School()
+
+if let s1 = Student(name: "Arun", marks: 95) {
+    school.addStudent(s1)
+}
+
+if let s2 = Student(name: "Bala", marks: 82) {
+    school.addStudent(s2)
+}
+
+if let s3 = Student(name: "Charan", marks: 68) {
+    school.addStudent(s3)
+}
+
+if let s4 = Student(name: "Divya", marks: 75) {
+    school.addStudent(s4)
+}
+
+school.printReport()
